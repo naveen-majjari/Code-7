@@ -1,0 +1,37 @@
+name: Unit Tests
+
+on:
+  push:
+    branches:
+      - unit_test_vineeth_ketham
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+  
+      - name: Install npm
+        run: npm install
+
+      - name: jest
+        run: npm install --save-dev jest@latest
+
+      - name: jsdom
+        run: npm install --save-dev jsdom@latest
+
+      - name: babel
+        run: npm install --save-dev @babel/preset-env @babel/preset-react
+    
+      - name: Instal Scripts
+        run: npm install react-scripts --save-dev
+        
+      - name: Run Tests
+        run: npm run test
